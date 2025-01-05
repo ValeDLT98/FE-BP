@@ -1,0 +1,20 @@
+.element {
+  display: inline;
+  color: #0f265c;
+}
+
+.container {
+  text-align: center;
+}
+
+.menu {
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  color: #0f265c;
+  border-right: 1px solid grey;
+}
+
+.home {
+  margin-left: 250px;
+}

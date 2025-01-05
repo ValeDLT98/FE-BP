@@ -1,0 +1,73 @@
+<div class="contenedor">
+  <h2 style="color: #0f265c">Reporte</h2>
+
+  <div class="menu">
+    <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
+      <div class="form-row">
+        <label for="cliente">Cliente</label>
+        <select name="cliente" id="cliente" formControlName="cliente">
+          <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+            {{ cliente.nombres }}
+          </option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="fechaInicio">Fecha Inicio</label>
+
+        <input
+          type="date"
+          id="fechaInicio"
+          name="fechaInicio"
+          formControlName="fechaInicio"
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="fechaFin">Fecha Fin</label>
+
+        <input
+          type="date"
+          id="fechaFin"
+          name="fechaFin"
+          formControlName="fechaFin"
+        />
+      </div>
+      <button class="button-secondary" [disabled]="validateForm()">
+        Generar
+      </button>
+    </form>
+  </div>
+
+  <div class="" style="margin-top: 10px">
+    <button class="button-primary" (click)="generatePDF()">Generar PDF</button>
+  </div>
+
+  <div style="margin-top: 50px">
+    <table class="table" id="table" style="width: 100%">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Numero de cuenta</th>
+          <th>Tipo de cuenta</th>
+          <th>Saldo inicial</th>
+          <th>Estado</th>
+          <th>Movimiento</th>
+          <th>Saldo disponible</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reporte of reportes">
+          <th>{{ reporte.Fecha }}</th>
+          <th>{{ reporte.Cliente }}</th>
+          <th>{{ reporte.NumeroCuenta }}</th>
+          <th>{{ reporte.Tipo }}</th>
+          <th>{{ reporte.SaldoInicial }}</th>
+          <th>{{ reporte.Estado }}</th>
+          <th>{{ reporte.Movimiento }}</th>
+          <th>{{ reporte.SaldoDisponible }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

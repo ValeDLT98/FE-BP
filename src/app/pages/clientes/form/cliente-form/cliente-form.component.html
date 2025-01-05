@@ -1,0 +1,133 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <div *ngIf="sucess == 1" class="mensaje-exito" id="mensaje-exito">
+    ¡Datos guardados correctamente!
+  </div>
+  <div *ngIf="sucess == 2" class="mensaje-error" id="mensaje-error">
+    Hubo un error al guardar los datos.
+  </div>
+  <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
+    <div class="form-row">
+      <label for="nombres">Nombres</label>
+      <input
+        type="text"
+        id="nombres"
+        name="nombres"
+        formControlName="nombres"
+      />
+      <div>
+        <span *ngIf="isValidField('nombres')">{{
+          getFieldError("nombres")
+        }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="identificacion">Identificación</label>
+      <input
+        type="text"
+        id="identificacion"
+        name="identificacion"
+        formControlName="identificacion"
+      />
+      <div>
+        <span *ngIf="isValidField('identificacion')">{{
+          getFieldError("identificacion")
+        }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="direccion">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        formControlName="direccion"
+      />
+      <div>
+        <span *ngIf="isValidField('direccion')">{{
+          getFieldError("direccion")
+        }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="telefono">Teléfono</label>
+
+      <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        formControlName="telefono"
+      />
+      <div>
+        <span *ngIf="isValidField('telefono')">{{
+          getFieldError("telefono")
+        }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="genero">Género</label>
+      <div>
+        <input
+          type="radio"
+          id="genero1"
+          name="genero"
+          value="Femenino"
+          formControlName="genero"
+        />
+        <label for="genero1">Femenino</label><br />
+        <input
+          type="radio"
+          id="genero2"
+          name="genero"
+          value="Masculino"
+          formControlName="genero"
+        />
+        <label for="genero2">Masculino</label><br />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="edad">Edad</label>
+      <input type="number" id="edad" name="edad" formControlName="edad" />
+    </div>
+    <div class="form-row">
+      <label for="genero">Estado</label>
+      <div>
+        <input
+          type="radio"
+          id="estado1"
+          name="estado"
+          formControlName="estado"
+          value="true"
+        />
+        <label for="estado1">Activo</label><br />
+        <input
+          type="radio"
+          id="estado2"
+          name="estado"
+          formControlName="estado"
+          value="false"
+        />
+        <label for="estado2">Inactivo</label><br />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="contrasena">Contraseña</label>
+      <input
+        type="text"
+        id="contrasena"
+        name="contrasena"
+        formControlName="contrasena"
+      />
+    </div>
+
+    <div class="row">
+      <button class="button-primary" (click)="resetForm()">Reiniciar</button>
+      <button class="button-secondary" [disabled]="validateForm()">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

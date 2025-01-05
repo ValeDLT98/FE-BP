@@ -1,0 +1,74 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <div *ngIf="sucess == 1" class="mensaje-exito" id="mensaje-exito">
+    ¡Datos guardados correctamente!
+  </div>
+  <div *ngIf="sucess == 2" class="mensaje-error" id="mensaje-error">
+    Hubo un error al guardar los datos.
+  </div>
+  <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
+    <div class="form-row">
+      <label for="cuenta">Numero de cuenta</label>
+      <select name="cuenta" id="cuenta" formControlName="cuenta">
+        <option *ngFor="let cuenta of cuentas" [ngValue]="cuenta">
+          {{ cuenta.numero }}
+        </option>
+      </select>
+      <div>
+        <span *ngIf="isValidField('cuenta')">{{
+          getFieldError("cuenta")
+        }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="tipo_movimiento">Tipo de movimiento</label>
+      <div>
+        <input
+          type="radio"
+          id="tipo_movimiento1"
+          name="tipo_movimiento"
+          formControlName="tipo_movimiento"
+          value="Depósito"
+        />
+        <label for="tipo_movimiento1">Depósito</label><br />
+        <input
+          type="radio"
+          id="tipo_movimiento2"
+          name="tipo_movimiento"
+          formControlName="tipo_movimiento"
+          value="Retiro"
+        />
+        <label for="estado2">Retiro</label><br />
+      </div>
+      <div>
+        <span *ngIf="isValidField('tipo_movimiento')">{{
+          getFieldError("tipo_movimiento")
+        }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="monto">Valor</label>
+      <input type="number" id="monto" name="monto" formControlName="monto" />
+      <div>
+        <span *ngIf="isValidField('monto')">{{ getFieldError("monto") }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="fecha">Fecha</label>
+
+      <input type="date" id="fecha" name="fecha" formControlName="fecha" />
+      <div>
+        <span *ngIf="isValidField('fecha')">{{ getFieldError("fecha") }}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="button-primary" (click)="resetForm()">Reiniciar</button>
+      <button class="button-secondary" [disabled]="validateForm()">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

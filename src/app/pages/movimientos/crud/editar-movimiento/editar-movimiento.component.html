@@ -1,0 +1,11 @@
+<ng-template #loading>
+  <div class="alert">Espere por favor</div>
+</ng-template>
+
+<div *ngIf="movimiento; else loading" class="form-container">
+  <app-movimiento-form
+    title="Editar movimiento"
+    type="editar"
+    [movimiento]="movimiento"
+  ></app-movimiento-form>
+</div>

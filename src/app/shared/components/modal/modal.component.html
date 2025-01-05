@@ -1,0 +1,16 @@
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-modal" (click)="eliminarElemento(false)"
+      >×</span
+    >
+    <p id="mensaje-modal">¿Deseas eliminar el elemento?</p>
+    <div class="row-buttons">
+      <button class="button-secondary" (click)="eliminarElemento(false)">
+        Cancelar
+      </button>
+      <button class="button-primary" (click)="eliminarElemento(true)">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>

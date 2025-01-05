@@ -1,0 +1,55 @@
+<div class="contenedor">
+  <h2 style="color: #0f265c">Cuentas</h2>
+
+  <div class="menu">
+    <input
+      #searchInput
+      type="search"
+      placeholder="Buscar"
+      (keyup)="searchCuenta(searchInput.value)"
+    />
+    <button class="button-new" routerLink="./agregar">Nuevo</button>
+  </div>
+
+  <app-modal
+    *ngIf="!hideModal"
+    (pressEliminar)="eliminarElemento($event)"
+  ></app-modal>
+
+  <div style="margin-top: 50px">
+    <table class="table" style="width: 100%">
+      <thead>
+        <tr>
+          <th>Numero Cuenta</th>
+          <th>Tipo</th>
+          <th>Saldo Inicial</th>
+          <th>Estado</th>
+          <th>Cliente</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cuenta of filteredCuentas">
+          <td>{{ cuenta.numero }}</td>
+          <td>{{ cuenta.tipo }}</td>
+          <td>{{ cuenta.saldo }}</td>
+          <td>{{ cuenta.estado ? "Activa" : "Inactiva" }}</td>
+          <td>{{ cuenta.nombreCliente }}</td>
+          <td class="row-actions">
+            <div class="icon">
+              <i
+                class="fa-solid fa-pen"
+                style="margin-right: 15px"
+                [routerLink]="['./', cuenta.numero]"
+              ></i>
+              <i
+                class="fa-solid fa-trash"
+                (click)="hideModal = false; id = cuenta.numero"
+              ></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

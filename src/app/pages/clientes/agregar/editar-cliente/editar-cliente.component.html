@@ -1,0 +1,11 @@
+<ng-template #loading>
+  <div class="alert">Espere por favor</div>
+</ng-template>
+
+<div *ngIf="cliente != null; else loading" class="form-container">
+  <app-cliente-form
+    type="editar"
+    [client]="cliente"
+    title="Editar cliente"
+  ></app-cliente-form>
+</div>

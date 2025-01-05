@@ -1,0 +1,11 @@
+<ng-template #loading>
+  <div class="alert">Espere por favor</div>
+</ng-template>
+
+<div *ngIf="cuenta != null; else loading" class="form-container">
+  <app-cuenta-form
+    title="Editar Cuenta"
+    type="editar"
+    [cuenta]="cuenta"
+  ></app-cuenta-form>
+</div>

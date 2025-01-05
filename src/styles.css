@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+.button-primary {
+  background-color: #ffdd00;
+  border-color: #ffdd00;
+  color: #0f265c;
+  width: 100px;
+  height: 30px;
+}
+
+.button-secondary {
+  background-color: #0f265c;
+  border-color: #0f265c;
+  color: #ffdd00;
+  width: 100px;
+  height: 30px;
+}
+
+.button-secondary:disabled {
+  background-color: #495a82;
+  border-color: #495a82;
+  color: #8f8444;
+  width: 100px;
+  height: 30px;
+}
+
+.icon {
+  cursor: pointer;
+}

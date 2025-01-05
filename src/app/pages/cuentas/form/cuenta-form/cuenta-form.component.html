@@ -1,0 +1,93 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <div *ngIf="sucess == 1" class="mensaje-exito" id="mensaje-exito">
+    ¡Datos guardados correctamente!
+  </div>
+  <div *ngIf="sucess == 2" class="mensaje-error" id="mensaje-error">
+    Hubo un error al guardar los datos.
+  </div>
+  <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
+    <div class="form-row">
+      <label for="numero">Numero</label>
+      <input
+        readonly
+        type="text"
+        id="numero"
+        name="numero"
+        formControlName="numero"
+      />
+      <div>
+        <span *ngIf="isValidField('numero')">{{
+          getFieldError("numero")
+        }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="tipo">Tipo</label>
+      <div>
+        <input
+          type="radio"
+          id="tipo1"
+          name="tipo"
+          value="Ahorros"
+          formControlName="tipo"
+        />
+        <label for="tipo1">Ahorros</label><br />
+        <input
+          type="radio"
+          id="tipo2"
+          name="tipo"
+          value="Corriente"
+          formControlName="tipo"
+        />
+        <label for="tipo2">Corriente</label><br />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="saldo">Saldo Inicial</label>
+      <input type="number" id="saldo" name="saldo" formControlName="saldo" />
+      <div>
+        <span *ngIf="isValidField('saldo')">{{ getFieldError("saldo") }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="genero">Estado</label>
+      <div>
+        <input
+          type="radio"
+          id="estado1"
+          name="estado"
+          formControlName="estado"
+          value="true"
+        />
+        <label for="estado1">Activa</label><br />
+        <input
+          type="radio"
+          id="estado2"
+          name="estado"
+          formControlName="estado"
+          value="false"
+        />
+        <label for="estado2">Inactiva</label><br />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="cliente">Cliente</label>
+      <select name="cliente" id="cliente" formControlName="cliente">
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente">
+          {{ cliente.nombres }}
+        </option>
+      </select>
+    </div>
+
+    <div class="row">
+      <button class="button-primary" (click)="resetForm()">Reiniciar</button>
+      <button class="button-secondary" [disabled]="validateForm()">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<div class="contenedor">
+  <h2 style="color: #0f265c">Clientes</h2>
+
+  <div class="menu">
+    <input
+      #searchInput
+      type="search"
+      placeholder="Buscar"
+      (keyup)="searchCliente(searchInput.value)"
+    />
+    <button class="button-new" routerLink="./agregar">Nuevo</button>
+  </div>
+
+  <app-modal
+    *ngIf="!hideModal"
+    (pressEliminar)="eliminarElemento($event)"
+  ></app-modal>
+
+  <div style="margin-top: 50px">
+    <table class="table" style="width: 100%">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Identificación</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Género</th>
+          <th>Edad</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of filteredClientes">
+          <td>{{ cliente.nombres }}</td>
+          <td>{{ cliente.identificacion }}</td>
+          <td>{{ cliente.direccion }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.genero }}</td>
+          <td>{{ cliente.edad }}</td>
+          <td>{{ cliente.estado ? "Activo" : "Inactivo" }}</td>
+          <td class="row-actions">
+            <div class="icon">
+              <i
+                class="fa-solid fa-pen"
+                style="margin-right: 15px"
+                [routerLink]="['./', cliente.id]"
+              ></i>
+              <i
+                class="fa-solid fa-trash"
+                (click)="hideModal = false; id = cliente.id"
+              ></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
