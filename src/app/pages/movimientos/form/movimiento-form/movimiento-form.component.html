@@ -4,7 +4,7 @@
     ¡Datos guardados correctamente!
   </div>
   <div *ngIf="sucess == 2" class="mensaje-error" id="mensaje-error">
-    Hubo un error al guardar los datos.
+    {{ error }}
   </div>
   <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
     <div class="form-row">

@@ -14,6 +14,7 @@ export class MovimientoFormComponent {
   public sucess: number = 0;
   public myForm: FormGroup = new FormGroup({});
   public cuentas: CuentaDTO[] = [];
+  public error: string = 'Hubo un error al guardar los datos.';
 
   @Input()
   public movimiento!: Movimiento;
@@ -89,6 +90,7 @@ export class MovimientoFormComponent {
               this.sucess = 1;
             },
             (error) => {
+              this.error = error.error.message;
               this.sucess = 2;
             }
           );
@@ -98,6 +100,8 @@ export class MovimientoFormComponent {
             this.sucess = 1;
           },
           (error) => {
+            this.error = error.error.message;
+
             this.sucess = 2;
           }
         );
