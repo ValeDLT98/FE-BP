@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let movimiento of filteredMovimientos">
-          <td>{{ movimiento.cuenta }}</td>
+          <td>{{ movimiento.cuenta.numero }}</td>
           <td>{{ movimiento["tipo_movimiento"] }}</td>
           <td>{{ movimiento.monto }}</td>
           <td>{{ movimiento.fecha | date : "MMM d, y, h:mm:ss a" }}</td>

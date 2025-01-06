@@ -11,8 +11,8 @@ export class MovimientosService {
 
   constructor(private http: HttpClient) {}
 
-  getMovimientos(): Observable<Movimiento[]> {
-    return this.http.get<Movimiento[]>(this.apiUrl);
+  getMovimientos(): Observable<MovimientoDTO[]> {
+    return this.http.get<MovimientoDTO[]>(this.apiUrl);
   }
 
   crearMovimiento(movimiento: MovimientoDTO): Observable<Movimiento> {

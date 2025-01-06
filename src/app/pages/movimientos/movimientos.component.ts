@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Movimiento } from '../../interfaces/movimientos';
+import { Movimiento, MovimientoDTO } from '../../interfaces/movimientos';
 import { MovimientosService } from '../../services/movimientos/movimientos.service';
 
 @Component({
@@ -8,10 +8,10 @@ import { MovimientosService } from '../../services/movimientos/movimientos.servi
   styleUrl: './movimientos.component.css',
 })
 export class MovimientosComponent {
-  public movimientos: Movimiento[] = [];
+  public movimientos: MovimientoDTO[] = [];
   public hideModal: boolean = true;
   public id: number = 0;
-  public filteredMovimientos: Movimiento[] = [];
+  public filteredMovimientos: MovimientoDTO[] = [];
 
   constructor(private movimientoService: MovimientosService) {}
 
@@ -19,7 +19,6 @@ export class MovimientosComponent {
     this.movimientoService.getMovimientos().subscribe((movimientos) => {
       this.movimientos = movimientos;
       this.filteredMovimientos = movimientos;
-      console.log(movimientos);
     });
   }
 

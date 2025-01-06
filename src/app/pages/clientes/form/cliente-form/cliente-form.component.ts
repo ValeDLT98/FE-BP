@@ -33,7 +33,7 @@ export class ClienteFormComponent {
   ngOnInit() {
     this.myForm = this.fb.group({
       nombres: [
-        this.client.nombres,
+        this.client?.nombres,
         [
           Validators.required,
           Validators.minLength(5),
@@ -41,19 +41,19 @@ export class ClienteFormComponent {
         ],
       ],
       identificacion: [
-        this.client.identificacion,
+        this.client?.identificacion,
         [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
         ],
       ],
-      direccion: [this.client.direccion, [Validators.required]],
-      telefono: [this.client.telefono, [Validators.required]],
-      genero: [this.client.genero, [Validators.required]],
-      edad: [this.client.edad, [Validators.required]],
-      estado: [this.client.estado, [Validators.required]],
-      contrasena: [this.client.contrasena, [Validators.required]],
+      direccion: [this.client?.direccion, [Validators.required]],
+      telefono: [this.client?.telefono, [Validators.required]],
+      genero: [this.client?.genero, [Validators.required]],
+      edad: [this.client?.edad, [Validators.required]],
+      estado: [this.client?.estado, [Validators.required]],
+      contrasena: [this.client?.contrasena, [Validators.required]],
     });
   }
 
